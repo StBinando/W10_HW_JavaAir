@@ -20,4 +20,12 @@ public class Passenger extends Person {
     public Flight getFlight(){
         return this.flight;
     }
+
+    public void assignSeat(Integer _seat) {
+        this.seatNo = _seat;
+    }
+
+    public int getSeatNo() {
+        return this.seatNo;
+    }
 }

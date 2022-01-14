@@ -15,6 +15,13 @@ public class FlightTest {
     Passenger passenger1;
     Passenger passenger2;
     Passenger passenger3;
+    Passenger passenger4;
+    Passenger passenger5;
+    Passenger passenger6;
+    Passenger passenger7;
+    Passenger passenger8;
+    Passenger passenger9;
+
     Flight flight1;
     Date deptTime1;
 
@@ -40,6 +47,12 @@ public class FlightTest {
         passenger1 = new Passenger("Alice", 2);
         passenger2 = new Passenger("Carl", 1);
         passenger3 = new Passenger("Simon", 0);
+        passenger4 = new Passenger("Dana", 1);
+        passenger5 = new Passenger("Emma", 1);
+        passenger6 = new Passenger("Frank", 1);
+        passenger7 = new Passenger("George", 1);
+        passenger8 = new Passenger("Harry", 1);
+        passenger9 = new Passenger("Jenny", 1);
     }
 
     @Test
@@ -95,13 +108,60 @@ public class FlightTest {
         flight1.bookPassenger(passenger1);
         flight1.bookPassenger(passenger2);
         flight1.bookPassenger(passenger3);
-        assertEquals(17, flight1.getRemainingSeats());
+        assertEquals(5, flight1.getRemainingSeats());
     }
 
     @Test
     public void flightCanAddFlightToPassenger(){
         flight1.bookPassenger(passenger1);
         assertEquals(flight1, passenger1.getFlight());
+    }
 
+    @Test
+    public void flightStartsWithAllEmptySeats(){
+        assertEquals(8, flight1.getNoOfFreeSeats().size());
+    }
+
+    @Test
+    public void flightCanAssignUniqueSeatToPassenger(){
+        assertEquals(8, flight1.getNoOfFreeSeats().size());
+        System.out.println("free seats remaining: " + flight1.getNoOfFreeSeats().size());
+        System.out.println("----------------------------------");
+        flight1.bookPassenger(passenger1);
+        System.out.println("Passenger 1 "+passenger1.getName() +" - seat no: " + passenger1.getSeatNo());
+        System.out.println("free seats remaining: " + flight1.getNoOfFreeSeats().size());
+        System.out.println("----------------------------------");
+        flight1.bookPassenger(passenger2);
+        System.out.println("Passenger 2 "+passenger2.getName() +" - seat no: " + passenger2.getSeatNo());
+        System.out.println("free seats remaining: " + flight1.getNoOfFreeSeats().size());
+        System.out.println("----------------------------------");
+        flight1.bookPassenger(passenger3);
+        System.out.println("Passenger 3 "+passenger3.getName() +" - seat no: " + passenger3.getSeatNo());
+        System.out.println("free seats remaining: " + flight1.getNoOfFreeSeats().size());
+        System.out.println("----------------------------------");
+        flight1.bookPassenger(passenger4);
+        System.out.println("Passenger 4 "+passenger4.getName() +" - seat no: " + passenger4.getSeatNo());
+        System.out.println("free seats remaining: " + flight1.getNoOfFreeSeats().size());
+        System.out.println("----------------------------------");
+        flight1.bookPassenger(passenger5);
+        System.out.println("Passenger 5 "+passenger5.getName() +" - seat no: " + passenger5.getSeatNo());
+        System.out.println("free seats remaining: " + flight1.getNoOfFreeSeats().size());
+        System.out.println("----------------------------------");
+        flight1.bookPassenger(passenger6);
+        System.out.println("Passenger 6 "+passenger6.getName() +" - seat no: " + passenger6.getSeatNo());
+        System.out.println("free seats remaining: " + flight1.getNoOfFreeSeats().size());
+        System.out.println("----------------------------------");
+        flight1.bookPassenger(passenger7);
+        System.out.println("Passenger 7 "+passenger7.getName() +" - seat no: " + passenger7.getSeatNo());
+        System.out.println("free seats remaining: " + flight1.getNoOfFreeSeats().size());
+        System.out.println("----------------------------------");
+        flight1.bookPassenger(passenger8);
+        System.out.println("Passenger 8 "+passenger8.getName() +" - seat no: " + passenger8.getSeatNo());
+        System.out.println("free seats remaining: " + flight1.getNoOfFreeSeats().size());
+        System.out.println("----------------------------------");
+        flight1.bookPassenger(passenger9);
+        System.out.println("Passenger 9 "+passenger9.getName() +" - seat no: " + passenger9.getSeatNo());
+        System.out.println("free seats remaining: " + flight1.getNoOfFreeSeats().size());
+        System.out.println("----------------------------------");
     }
 }

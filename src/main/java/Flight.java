@@ -10,6 +10,8 @@ public class Flight {
     private String dest;
     private String dept;
     private Date deptTime;
+    private ArrayList<Integer> freeSeats;
+    private int randomIndex;
 
     public Flight(Pilot pilot,
                   ArrayList<CabinCrewMember> cabinCrew,
@@ -27,6 +29,10 @@ public class Flight {
         this.dept = dept;
         this.deptTime = deptTime;
         this.PassengerList = new ArrayList<>();
+        this.freeSeats = new ArrayList<>();
+        for (int i = 0; i <= (plane.getCapacity()-1); i++) {
+            this.freeSeats.add(i+1);
+        }
     }
 
     public Pilot getPilot() {
@@ -62,11 +68,22 @@ public class Flight {
     }
 
     public void bookPassenger(Passenger _passenger) {
-        this.PassengerList.add(_passenger);
-        _passenger.addFlightToPassenger(this);
+        if (this.getNoOfFreeSeats().size()>0){
+            this.PassengerList.add(_passenger);
+            _passenger.addFlightToPassenger(this);
+            randomIndex = (int)(Math.random()*this.getNoOfFreeSeats().size() +1);
+            _passenger.assignSeat(this.freeSeats.remove(randomIndex-1));
+        } else {
+            System.out.println("Sorry " + _passenger.getName() + ", no seats on this flight");
+        }
+
     }
 
     public int getRemainingSeats() {
         return (this.plane.getCapacity()-this.getPassengersList().size());
+    }
+
+    public ArrayList<Integer> getNoOfFreeSeats() {
+        return this.freeSeats;
     }
 }

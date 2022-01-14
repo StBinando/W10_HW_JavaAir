@@ -46,7 +46,7 @@ public class FlightManagerTest {
     }
     @Test
     public void FMCanGetWeightPerPassenger(){
-        assertEquals(30, FM.getWeightForPassenger(flight1));
+        assertEquals(75, FM.getWeightForPassenger(flight1));
     }
 
     @Test
@@ -54,7 +54,7 @@ public class FlightManagerTest {
         flight1.bookPassenger(passenger1);
         flight1.bookPassenger(passenger2);
         flight1.bookPassenger(passenger3);
-        assertEquals(90, FM.getTotalWeightBags(flight1));
+        assertEquals(225, FM.getTotalWeightBags(flight1));
     }
 
     @Test
@@ -62,6 +62,6 @@ public class FlightManagerTest {
         flight1.bookPassenger(passenger1);
         flight1.bookPassenger(passenger2);
         flight1.bookPassenger(passenger3);
-        assertEquals(1110, FM.getRemainingWeight(flight1));
+        assertEquals(975, FM.getRemainingWeight(flight1));
     }
 }
