@@ -10,4 +10,8 @@ public class CabinCrewMember extends Person{
     public Rank getRank(){
         return this.rank;
     }
+
+    public String relayMsg(){
+        return "Brace for impact!";
+    }
 }

@@ -20,4 +20,9 @@ public class CabinCrewMemberTest {
     public void CCMHasRank(){
         assertEquals(Rank.FLIGHT_ATTENDANT, hostess1.getRank());
     }
+
+    @Test
+    public void CCMCanSpeak(){
+        assertEquals("Brace for impact!", hostess1.relayMsg());
+    }
 }
