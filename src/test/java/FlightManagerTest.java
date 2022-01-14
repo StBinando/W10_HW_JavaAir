@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-public class FlightTest {
+public class FlightManagerTest {
     Pilot pilot1;
     CabinCrewMember hostess1;
     CabinCrewMember coPilot1;
@@ -15,6 +15,7 @@ public class FlightTest {
     Passenger passenger2;
     Passenger passenger3;
     Flight flight1;
+    FlightManager FM;
 
     @Before
     public void before(){
@@ -37,61 +38,27 @@ public class FlightTest {
         passenger1 = new Passenger("Alice", 2);
         passenger2 = new Passenger("Carl", 1);
         passenger3 = new Passenger("Simon", 0);
+
+        FM = new FlightManager();
+    }
+    @Test
+    public void FMCanGetWeightPerPassenger(){
+        assertEquals(30, FM.getWeightForPassenger(flight1));
     }
 
     @Test
-    public void flightHasCaptain(){
-        assertEquals("Sully",flight1.getPilot().getName());
-    }
-
-    @Test
-    public void flightHas2CCM(){
-        assertEquals(2, flight1.getCabinCrew().size());
-    }
-
-    @Test
-    public void flightHasPlane(){
-        assertEquals(Plane.CESSNA650, flight1.getPlane());
-    }
-
-    @Test
-    public void flightHasNo(){
-        assertEquals("AZ666", flight1.getFlightNumber());
-    }
-
-    @Test
-    public void flightHasDestination(){
-        assertEquals("TRN", flight1.getDest());
-    }
-
-    @Test
-    public void flightHasDeparture(){
-        assertEquals("EDI", flight1.getDept());
-    }
-
-    @Test
-    public void flightHasDeptTime(){
-        assertEquals("0650", flight1.getDeptTime());
-    }
-
-    @Test
-    public void flightStartsEmpty(){
-        assertEquals(0, flight1.getPassengersList().size());
-    }
-
-    @Test
-    public void flightCanBookPassengers(){
+    public void FMcanGetTotalWeightBookedByPassengers(){
         flight1.bookPassenger(passenger1);
         flight1.bookPassenger(passenger2);
         flight1.bookPassenger(passenger3);
-        assertEquals(3, flight1.getPassengersList().size());
+        assertEquals(90, FM.getTotalWeightBags(flight1));
     }
 
     @Test
-    public void flightCanCheckRemainingSeats(){
+    public void FMcanGetRemainingWeight(){
         flight1.bookPassenger(passenger1);
         flight1.bookPassenger(passenger2);
         flight1.bookPassenger(passenger3);
-        assertEquals(17, flight1.getRemainingSeats());
+        assertEquals(1110, FM.getRemainingWeight(flight1));
     }
 }

@@ -1,6 +1,6 @@
 public enum Plane {
-    BOING747(70,2800),
-    CESSNA650(20,600)
+    BOING747(70,5600),
+    CESSNA650(20,1200)
     ;
 
     private final int capacity;
