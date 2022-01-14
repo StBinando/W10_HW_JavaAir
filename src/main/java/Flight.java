@@ -63,6 +63,7 @@ public class Flight {
 
     public void bookPassenger(Passenger _passenger) {
         this.PassengerList.add(_passenger);
+        _passenger.addFlightToPassenger(this);
     }
 
     public int getRemainingSeats() {
